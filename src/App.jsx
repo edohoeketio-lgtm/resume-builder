@@ -26,7 +26,7 @@ function App() {
     title: 'Virtual Assistant & Customer Care Specialist',
     email: 'sarah.jenkins@example.com',
     phone: '(555) 987-6543',
-    summary: 'Dedicated and highly organized administrative professional with a passion for delivering exceptional customer experiences. Adept at managing complex schedules, handling high-volume communications, and resolving client inquiries with empathy and efficiency. Fluent in modern digital workspaces and committed to streamlining operations for growing teams.',
+    summary: 'Detail-oriented administrative professional with a strong background in customer care and remote operations. I have a proven ability to manage complex calendars and triage high-volume email inboxes. Experienced in providing friendly frontline support for e-commerce shops and independent businesses. Highly adaptable to new digital tools like helpdesk software and CRM platforms. I enjoy taking over repetitive daily tasks so business owners can focus on their core work. My priority is always ensuring clients feel heard and their problems get solved quickly.',
     experience: [
       { 
         id: 1, 
@@ -35,16 +35,25 @@ function App() {
         startDate: '2023-01', 
         endDate: '', 
         isCurrent: true,
-        description: '- Managed email inbox triage and calendar scheduling for small business owners, reducing response times by 40%.\n- Handled customer inquiries, billing questions, and appointment bookings via email and social media platforms.\n- Organized digital files, maintained spreadsheets, and performed data entry with 99% accuracy.\n- Coordinated travel arrangements and prepared weekly itinerary reports.' 
+        description: '- Managed daily email triage and calendar scheduling for 3 small business owners.\n- Reduced average client response time by 40%.\n- Answered customer questions and booked appointments through email and social platforms.\n- Organized digital files and updated tracking spreadsheets.\n- Coordinated travel arrangements and compiled weekly schedule reports.' 
       },
       { 
         id: 2, 
-        title: 'Community Support Coordinator (Volunteer)', 
-        company: 'Local Community Organization', 
-        startDate: '2021-06', 
+        title: 'E-commerce Support Assistant (Contract)', 
+        company: 'Local Retail Cooperative', 
+        startDate: '2022-06', 
         endDate: '2022-12', 
         isCurrent: false,
-        description: '- Acted as the first point of contact for community members, answering questions and providing resources.\n- De-escalated tense situations and resolved complaints with active listening and empathy.\n- Organized weekly community events, managing logistics, vendor communication, and attendee RSVPs.' 
+        description: '- Acted as the primary point of contact for online shoppers.\n- Resolved order delays and processed customer refunds.\n- Answered daily product questions and managed an average of 40 tickets per day.\n- Tracked inventory levels and updated listings on the company website.\n- De-escalated frustrated customers to solve shipping errors.' 
+      },
+      { 
+        id: 3, 
+        title: 'Community Support Coordinator (Volunteer)', 
+        company: 'Neighborhood Youth Center', 
+        startDate: '2021-01', 
+        endDate: '2022-05', 
+        isCurrent: false,
+        description: '- Greeted visitors and directed them to appropriate staff members.\n- Maintained a contact database of over 500 community members.\n- Organized logistics for weekly events, including venue setup and tracking RSVPs.\n- Answered phones and provided information about upcoming programs.' 
       }
     ],
     education: [
