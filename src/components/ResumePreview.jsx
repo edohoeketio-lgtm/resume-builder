@@ -1,15 +1,14 @@
 import React from 'react';
 
 const ResumePreview = ({ data }) => {
-  // Simple helper to render line breaks in text areas
-  const renderTextWithBreaks = (text) => {
-    if (!text) return null;
-    return text.split('\n').map((line, index) => (
-      <span key={index}>
-        {line}
-        <br />
-      </span>
-    ));
+  const formatDate = (dateStr, isCurrent) => {
+    if (isCurrent) return 'Present';
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length !== 2) return dateStr;
+    const [year, month] = parts;
+    const date = new Date(year, parseInt(month) - 1);
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   };
 
   return (
@@ -37,21 +36,46 @@ const ResumePreview = ({ data }) => {
       )}
 
       {/* Experience */}
-      {data.experience && (
+      {data.experience && data.experience.length > 0 && (
         <section className="mb-8">
-          <h3 className="text-lg font-bold uppercase tracking-widest text-gray-800 mb-3">Experience</h3>
-          <div className="text-gray-700 leading-relaxed text-sm md:text-base whitespace-pre-wrap">
-            {data.experience}
+          <h3 className="text-lg font-bold uppercase tracking-widest text-gray-800 mb-4">Experience</h3>
+          <div className="space-y-6">
+            {data.experience.map(exp => (
+              <div key={exp.id}>
+                <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="text-md font-bold text-gray-900">{exp.title}</h4>
+                  <span className="text-sm font-medium text-gray-600 whitespace-nowrap ml-4">
+                    {formatDate(exp.startDate, false)} {exp.startDate && (exp.endDate || exp.isCurrent) && '- '} {formatDate(exp.endDate, exp.isCurrent)}
+                  </span>
+                </div>
+                <div className="text-md text-gray-700 font-medium mb-2">{exp.company}</div>
+                {exp.description && (
+                  <div className="text-gray-700 text-sm leading-relaxed whitespace-pre-wrap">
+                    {exp.description}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </section>
       )}
 
       {/* Education */}
-      {data.education && (
+      {data.education && data.education.length > 0 && (
         <section>
-          <h3 className="text-lg font-bold uppercase tracking-widest text-gray-800 mb-3">Education</h3>
-          <div className="text-gray-700 leading-relaxed text-sm md:text-base whitespace-pre-wrap">
-            {data.education}
+          <h3 className="text-lg font-bold uppercase tracking-widest text-gray-800 mb-4">Education</h3>
+          <div className="space-y-4">
+            {data.education.map(edu => (
+              <div key={edu.id}>
+                <div className="flex justify-between items-baseline mb-1">
+                  <h4 className="text-md font-bold text-gray-900">{edu.degree}</h4>
+                  <span className="text-sm font-medium text-gray-600 whitespace-nowrap ml-4">
+                    {formatDate(edu.startDate, false)} {edu.startDate && (edu.endDate || edu.isCurrent) && '- '} {formatDate(edu.endDate, edu.isCurrent)}
+                  </span>
+                </div>
+                <div className="text-md text-gray-700 font-medium">{edu.school}</div>
+              </div>
+            ))}
           </div>
         </section>
       )}
