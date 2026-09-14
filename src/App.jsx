@@ -1,10 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ResumeForm from './components/ResumeForm';
 import ResumePreview from './components/ResumePreview';
 import { Download, Edit3, Eye } from 'lucide-react';
 
 function App() {
   const [activeTab, setActiveTab] = useState('edit');
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        // 210mm is roughly 794px. Subtracting 32px for p-4 padding.
+        setScale((window.innerWidth - 32) / 794);
+      } else {
+        setScale(1);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   
   const [resumeData, setResumeData] = useState({
     name: 'Jane Doe',
@@ -111,10 +126,19 @@ function App() {
         </div>
         
         {/* Scrollable container for the A4 page */}
-        <div className="flex-1 overflow-auto p-4 md:p-8 flex justify-center print:p-0 print:overflow-visible print:block print:w-full">
-          <div className="bg-white shadow-2xl rounded-sm shrink-0 mb-8 overflow-hidden origin-top print:shadow-none print:m-0 print:w-full" style={{ width: '210mm', minHeight: '297mm' }}>
-            <div id="resume-preview" className="w-full h-full">
-              <ResumePreview data={resumeData} />
+        <div className="flex-1 overflow-x-hidden overflow-y-auto p-4 md:p-8 flex justify-center print:p-0 print:overflow-visible print:block print:w-full">
+          <div 
+            className="origin-top print:!scale-100 print:!h-auto"
+            style={{ 
+              transform: `scale(${scale})`, 
+              height: window.innerWidth < 768 ? `${scale * 1122}px` : 'auto',
+              marginBottom: '2rem'
+            }}
+          >
+            <div className="bg-white shadow-2xl rounded-sm shrink-0 overflow-hidden print:shadow-none print:m-0 print:w-full" style={{ width: '210mm', minHeight: '297mm' }}>
+              <div id="resume-preview" className="w-full h-full">
+                <ResumePreview data={resumeData} />
+              </div>
             </div>
           </div>
         </div>
