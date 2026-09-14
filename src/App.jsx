@@ -22,29 +22,38 @@ function App() {
   }, []);
   
   const [resumeData, setResumeData] = useState({
-    name: 'Jane Doe',
-    title: 'Software Engineer',
-    email: 'jane@example.com',
-    phone: '(555) 123-4567',
-    summary: 'A passionate developer with experience in React and Node.js.',
+    name: 'Sarah Jenkins',
+    title: 'Virtual Assistant & Customer Care Specialist',
+    email: 'sarah.jenkins@example.com',
+    phone: '(555) 987-6543',
+    summary: 'Dedicated and highly organized administrative professional with a passion for delivering exceptional customer experiences. Adept at managing complex schedules, handling high-volume communications, and resolving client inquiries with empathy and efficiency. Fluent in modern digital workspaces and committed to streamlining operations for growing teams.',
     experience: [
       { 
         id: 1, 
-        title: 'Software Engineer', 
-        company: 'Tech Corp', 
-        startDate: '2020-01', 
+        title: 'Freelance Virtual Assistant', 
+        company: 'Independent Clients', 
+        startDate: '2023-01', 
         endDate: '', 
         isCurrent: true,
-        description: '- Developed scalable web applications.\n- Collaborated with cross-functional teams.' 
+        description: '- Managed email inbox triage and calendar scheduling for small business owners, reducing response times by 40%.\n- Handled customer inquiries, billing questions, and appointment bookings via email and social media platforms.\n- Organized digital files, maintained spreadsheets, and performed data entry with 99% accuracy.\n- Coordinated travel arrangements and prepared weekly itinerary reports.' 
+      },
+      { 
+        id: 2, 
+        title: 'Community Support Coordinator (Volunteer)', 
+        company: 'Local Community Organization', 
+        startDate: '2021-06', 
+        endDate: '2022-12', 
+        isCurrent: false,
+        description: '- Acted as the first point of contact for community members, answering questions and providing resources.\n- De-escalated tense situations and resolved complaints with active listening and empathy.\n- Organized weekly community events, managing logistics, vendor communication, and attendee RSVPs.' 
       }
     ],
     education: [
       { 
         id: 1, 
-        degree: 'B.S. Computer Science', 
-        school: 'University of Technology', 
-        startDate: '2016-08', 
-        endDate: '2020-05' 
+        degree: 'B.A. Communications', 
+        school: 'State University', 
+        startDate: '2017-08', 
+        endDate: '2021-05' 
       }
     ]
   });
